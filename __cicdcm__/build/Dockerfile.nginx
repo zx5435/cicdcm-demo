@@ -1,0 +1,7 @@
+FROM nginx:1.13.0-alpine
+
+WORKDIR /app
+
+COPY ./__cicdcm__/build/www.conf /etc/nginx/conf.d/default.conf
+
+COPY . /app
