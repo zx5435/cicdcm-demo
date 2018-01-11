@@ -1,0 +1,21 @@
+version: "3.4"
+services:
+  php:
+    image: m-admin-php:64dbd51
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+    healthcheck:
+      #test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ps -ef | grep php-fpm | grep -v grep || exit 1
+      interval: 5s
+      timeout: 20s
+  nginx:
+    image: m-admin-nginx:64dbd51
+    ports:
+      - "9502:80"
+    depends_on:
+      - php
