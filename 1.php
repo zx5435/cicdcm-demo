@@ -1,6 +1,6 @@
 <?php
 
-$gitid = file_get_contents('.git/refs/heads/master');
+$gitid = file_get_contents('1.html');
 
 echo json_encode([
     'gitid'  => trim($gitid),

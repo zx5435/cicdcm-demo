@@ -1,21 +1,19 @@
 version: "3.4"
 services:
   php:
-    image: cdemo-php:309fc08
-    # image: cdemo-php:7130316
+    image: cdemo-php:a
     deploy:
       replicas: 2
       update_config:
         parallelism: 1
         delay: 10s
         order: start-first
-    # healthcheck:
-    #   test: ps -ef | grep php-fpm | grep -v grep || exit 1
-    #   interval: 5s
-    #   timeout: 20s
+    healthcheck:
+      test: ps -ef | grep php-fpm | grep -v grep || exit 1
+      interval: 5s
+      timeout: 20s
   nginx:
-    image: cdemo-nginx:309fc08
-    # image: cdemo-nginx:7130316
+    image: cdemo-nginx:a
     depends_on:
       - php
     ports:
