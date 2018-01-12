@@ -42,3 +42,4 @@ docker stack rm cdemo
 
 docker container prune -f
 
+docker service update cdemo_php --image=cdemo-php:7130316

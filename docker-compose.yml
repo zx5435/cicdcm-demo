@@ -2,7 +2,7 @@ version: "3.4"
 services:
   php:
     image: cdemo-php:309fc08
-    # image: cdemo-php:309fc08
+    # image: cdemo-php:7130316
     deploy:
       replicas: 2
       update_config:
@@ -15,7 +15,7 @@ services:
     #   timeout: 20s
   nginx:
     image: cdemo-nginx:309fc08
-    # image: cdemo-nginx:309fc08
+    # image: cdemo-nginx:7130316
     depends_on:
       - php
     ports:
