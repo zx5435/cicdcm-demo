@@ -18,9 +18,15 @@ services:
       - php
     ports:
       - "1212:80"
+    stop_grace_period: 20s
+    stop_signal: WINCH
     deploy:
       replicas: 1
       update_config:
         parallelism: 1
-        delay: 10s
+        delay: 20s
         order: start-first
+    healthcheck:
+      test: ps -ef | grep nginx | grep -v grep || exit 1
+      interval: 5s
+      timeout: 20s

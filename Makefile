@@ -10,6 +10,8 @@ deploy:
 down:
 	docker stack rm cdemo
 
+build: build-a build-b
+
 build-a:
 	echo 'html:a' > 1.html
 	docker build -f __cicdcm__/build/Dockerfile.nginx -t cdemo-nginx:a .
@@ -26,3 +28,8 @@ to-a:
 to-b:
 	docker service update cdemo_php --image=cdemo-php:b --detach=true
 
+check:
+	sh check.sh
+
+watch:
+	tail -f check.log
