@@ -1,0 +1,6 @@
+version: "2"
+services:
+  php:
+    image: cdemo-php:a
+  nginx:
+    image: cdemo-nginx:a
