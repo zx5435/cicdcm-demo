@@ -1,6 +1,6 @@
 version: "2"
 services:
   php:
-    image: cdemo-php:a
+    image: zx5435/cdemo-php:a
   nginx:
-    image: cdemo-nginx:a
+    image: zx5435/cdemo-nginx:a
