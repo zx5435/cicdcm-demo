@@ -14,13 +14,19 @@ build: build-a build-b
 
 build-a:
 	echo 'html:a' > 1.html
-	docker build -f __cicdcm__/build/Dockerfile.nginx -t cdemo-nginx:a .
-	docker build -f __cicdcm__/build/Dockerfile.php -t cdemo-php:a .
+	docker build -f __cicdcm__/build/Dockerfile.nginx -t zx5435/cdemo-nginx:a .
+	docker build -f __cicdcm__/build/Dockerfile.php -t zx5435/cdemo-php:a .
 
 build-b:
 	echo 'html:b' > 1.html
-	docker build -f __cicdcm__/build/Dockerfile.nginx -t cdemo-nginx:b .
-	docker build -f __cicdcm__/build/Dockerfile.php -t cdemo-php:b .
+	docker build -f __cicdcm__/build/Dockerfile.nginx -t zx5435/cdemo-nginx:b .
+	docker build -f __cicdcm__/build/Dockerfile.php -t zx5435/cdemo-php:b .
+
+push:
+	docker push zx5435/cdemo-nginx:a
+	docker push zx5435/cdemo-php:a
+	docker push zx5435/cdemo-nginx:b
+	docker push zx5435/cdemo-php:b
 
 to-a:
 	docker service update cdemo_php --image=cdemo-php:a --detach=true
