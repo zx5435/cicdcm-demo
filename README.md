@@ -6,3 +6,5 @@ docker stack deploy -c docker-compose.yml cdemo
 
 
 test
+
+master1
