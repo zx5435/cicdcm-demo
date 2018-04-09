@@ -2,5 +2,22 @@ version: "2"
 services:
   php:
     image: zx5435/cdemo-php:a
+    networks:
+      - mynet
   nginx:
     image: zx5435/cdemo-nginx:a
+    networks:
+      - mynet
+    ports:
+      - "80"
+      # - "4430:443"
+      # - "127.0.0.1:6666:666"
+networks:
+  mynet:
+    driver: overlay
+    attachable: true
+    config:
+      - subnet: 172.28.0.0/16
+    external:
+      name: my-pre-existing-network
+
